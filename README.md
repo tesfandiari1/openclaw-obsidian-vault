@@ -1,15 +1,17 @@
-# Obsidian Vault Skill for OpenClaw
+# Obsidian Vault Context Skill for OpenClaw
 
-Turn your Obsidian vault into a shared workspace between you and your AI agent. Edit notes on your phone, the agent sees them on the server. The agent writes research briefs, they appear in your Obsidian app. No chat window middleware. Just files you both read and write.
+Turn your Obsidian vault into a shared workspace between you and your AI agent. This skill teaches an OpenClaw agent how to navigate, read, write, and collaborate through an Obsidian vault using bidirectional sync via Obsidian Headless.
 
-## The Pattern
+## What This Does
 
-Most AI setups treat your knowledge base as read-only reference. This skill makes it a live collaboration surface:
+Most AI agent setups treat your knowledge base as read-only reference. This skill makes it a live collaboration surface:
 
-- **Bidirectional sync** via [Obsidian Headless](https://obsidian.md/help/sync/headless) — you edit in Obsidian (Mac/iPhone/iPad), the agent sees it. The agent writes output, you see it in your vault.
+- **Bidirectional sync** via [Obsidian Headless](https://obsidian.md/help/sync/headless) — you edit in Obsidian (Mac/iPhone/iPad), the agent sees it on the server. The agent writes output, you see it in your vault.
 - **Orchestration files** — lightweight `.md` files (`status.md`, `tasks.md`, `decisions.md`) that give the agent persistent state across sessions.
 - **Workspace-in-vault** — the agent's identity, skills, and workflows live inside the vault as editable markdown. Change the agent's behavior by editing a note.
-- **Structured navigation** — the agent learns your vault's folder structure and uses it for semantic context.
+- **Structured navigation** — the agent learns your vault's folder structure and uses it for semantic context (a file in `product/sprints/` means something different than one in `company/legal/`).
+
+## Architecture
 
 ```
 You (Obsidian on Mac / iPhone / iPad)
@@ -19,7 +21,7 @@ Server (OpenClaw + vault copy)
 Telegram / CLI (conversational trigger)
 ```
 
-The vault is the interface. Not a chat window. Not a terminal. A shared folder of markdown files.
+The vault is the interface. Not a chat window. Not a terminal. A shared folder of markdown files that both you and the agent can see and edit.
 
 ## What's Included
 
@@ -41,6 +43,12 @@ templates/
     decisions.md
     context-map.md
 ```
+
+## Prerequisites
+
+- [OpenClaw](https://openclaw.ai) instance (local or server)
+- [Obsidian](https://obsidian.md/) with a vault
+- [Obsidian Headless](https://obsidian.md/help/sync/headless) for server sync (optional, official open beta, requires Obsidian Sync at $4/month)
 
 ## Quick Start
 
@@ -134,12 +142,6 @@ Edit any of these in Obsidian. The agent picks up the changes on its next sessio
 ## Companion Article
 
 For the full story behind this pattern: [The Missing Interface Between You and Your AI Agent](https://medium.com/@tristinesfandiari/the-missing-interface-between-you-and-your-ai-agent)
-
-## Prerequisites
-
-- [OpenClaw](https://openclaw.ai) instance (local or server)
-- [Obsidian](https://obsidian.md/) with a vault
-- [Obsidian Headless](https://obsidian.md/help/sync/headless) for server sync (optional, official open beta, requires Obsidian Sync at $4/month)
 
 ## License
 
