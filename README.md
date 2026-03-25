@@ -100,6 +100,34 @@ cp templates/SOUL.md ~/.openclaw/workspace/SOUL.md
 cp templates/AGENTS.md ~/.openclaw/workspace/AGENTS.md
 ```
 
+## Works With Obsidian Skills
+
+This skill is designed to pair with [kepano/obsidian-skills](https://github.com/kepano/obsidian-skills) — the official collection of Agent Skills for Obsidian file formats by Steph Ango (Obsidian CEO).
+
+**kepano's skills** teach agents the *formats* — how to write valid Obsidian markdown, create `.canvas` files, query `.base` views, and use the Obsidian CLI.
+
+**This skill** teaches agents the *workflow* — how to navigate a vault, maintain persistent state across sessions, route output to the right folders, and collaborate with you through orchestration files.
+
+Together they give an agent full Obsidian fluency:
+
+| Layer | Skill | What It Handles |
+|-------|-------|-----------------|
+| Format | [obsidian-markdown](https://github.com/kepano/obsidian-skills) | Wikilinks, callouts, embeds, properties |
+| Format | [obsidian-bases](https://github.com/kepano/obsidian-skills) | `.base` files — database views, filters, formulas |
+| Format | [json-canvas](https://github.com/kepano/obsidian-skills) | `.canvas` files — nodes, edges, visual maps |
+| Tool | [obsidian-cli](https://github.com/kepano/obsidian-skills) | Vault CRUD, search, tasks, plugin dev |
+| Tool | [defuddle](https://github.com/kepano/obsidian-skills) | Web pages → clean markdown |
+| **Workflow** | **obsidian-vault-context** (this repo) | **Vault navigation, orchestration, bidirectional sync** |
+
+Install both for the full stack:
+```bash
+# Format + tool skills
+npx skills add git@github.com:kepano/obsidian-skills.git
+
+# Workflow + orchestration skill
+openclaw plugins install tesfandiari/openclaw-obsidian-vault
+```
+
 ## How It Works
 
 ### Orchestration Files
