@@ -110,28 +110,6 @@ sudo systemctl status obsidian-sync
 # Should show "active (running)"
 ```
 
-## Pointing OpenClaw at the Vault
-
-Once syncing, configure OpenClaw to use the vault as the agent workspace:
-
-```bash
-openclaw config set workspace.path /home/ubuntu/.openclaw/vault/OpenClaw/_agent
-```
-
-Or in `openclaw.json`:
-```json
-{
-  "agents": {
-    "defaults": {
-      "workspace": "/home/ubuntu/.openclaw/vault/OpenClaw/_agent",
-      "repoRoot": "/home/ubuntu/.openclaw/vault"
-    }
-  }
-}
-```
-
-The `workspace` is where the agent's SOUL.md, skills, and workflows live. The `repoRoot` gives the agent read access to the full vault.
-
 ## Verifying the Loop
 
 Test bidirectional sync:
@@ -166,10 +144,12 @@ Test bidirectional sync:
 
 ## Security Notes
 
+- **Isolate the vault from agent code.** The synced vault directory should contain only content files (notes, orchestration files, output). Agent skills, SOUL.md, and workflow definitions should live in a separate directory that the agent cannot write to via sync. Do not point your agent's workspace/repoRoot at the vault.
+- **Run the sync service as a dedicated, unprivileged user.** Avoid storing other secrets or credentials in the same home directory.
 - `ob login` stores credentials locally. Secure the server accordingly.
-- The sync directory should be owned by the same user running OpenClaw.
-- If using Cloudflare Tunnel, the vault is not exposed to the internet directly.
 - End-to-end encryption is supported — use `--encryption e2ee` when creating vaults.
+- Use selective sync to exclude sensitive folders (e.g., `company/legal/`, `.obsidian/`).
+- If using Cloudflare Tunnel, the vault is not exposed to the internet directly.
 - Consider encrypting the server's disk if the vault contains sensitive data.
 
 ## Useful Commands

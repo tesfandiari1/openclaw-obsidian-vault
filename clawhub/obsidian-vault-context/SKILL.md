@@ -89,6 +89,13 @@ This means neither party needs to explain what the other already wrote down. You
 
 For server sync setup, see `references/obsidian-headless-setup.md`.
 
+## Boundaries
+
+- **Read and write only within the vault directory.** Do not access files outside the vault root.
+- **Never modify skill files, agent config, or workflow definitions** unless the user explicitly asks you to. Your workspace is `_context/` and `work/` — not the files that define your own behavior.
+- **Treat `company/legal/` as read-only.** Do not create, edit, or delete files in legal directories.
+- **Do not store or log credentials.** If a workflow requires authentication, defer to the user.
+
 ## Context Safety
 
 If context compaction triggers mid-session, write working state to disk immediately:
