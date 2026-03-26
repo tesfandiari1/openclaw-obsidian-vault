@@ -169,7 +169,7 @@ Edit any of these in Obsidian. The agent picks up the changes on its next sessio
 
 ## Companion Article
 
-For the full story behind this pattern: [The Missing Interface Between You and Your AI Agent](https://medium.com/@tristinesfandiari/the-missing-interface-between-you-and-your-ai-agent)
+For the full story behind this pattern: [The Missing Interface Between You and Your AI Agent](https://medium.com/@tesfandiari/the-missing-interface-between-you-and-your-ai-agent-b56aec9a72cb)
 
 ## License
 
