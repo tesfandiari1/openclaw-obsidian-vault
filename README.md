@@ -1,6 +1,6 @@
-# Obsidian Vault Context Skill for OpenClaw
+# Obsidian Vault Context Skill
 
-Turn your Obsidian vault into a shared workspace between you and your AI agent. This skill teaches an OpenClaw agent how to navigate, read, write, and collaborate through an Obsidian vault using bidirectional sync via Obsidian Headless.
+Turn your Obsidian vault into a shared workspace between you and your AI agent. This skill teaches Claude how to navigate, read, write, and collaborate through an Obsidian vault using bidirectional sync via Obsidian Headless.
 
 ## What This Does
 
@@ -16,7 +16,7 @@ Most AI agent setups treat your knowledge base as read-only reference. This skil
 ```
 You (Obsidian on Mac / iPhone / iPad)
         ↕ Obsidian Sync (bidirectional)
-Server (OpenClaw + vault copy)
+Server (Claude + vault copy)
         ↕ Cloudflare Tunnel or local access
 Telegram / CLI (conversational trigger)
 ```
@@ -26,8 +26,8 @@ The vault is the interface. Not a chat window. Not a terminal. A shared folder o
 ## What's Included
 
 ```
-skills/
-  obsidian-vault-context/
+clawhub/
+  obsidian-vault-context/           # ClawHub-ready skill folder
     SKILL.md                        # Core skill: vault navigation, orchestration, output routing
     references/
       orchestration-files.md        # How to set up status.md, tasks.md, decisions.md
@@ -46,7 +46,6 @@ templates/
 
 ## Prerequisites
 
-- [OpenClaw](https://openclaw.ai) instance (local or server)
 - [Obsidian](https://obsidian.md/) with a vault
 - [Obsidian Headless](https://obsidian.md/help/sync/headless) for server sync (optional, official open beta, requires Obsidian Sync at $4/month)
 
@@ -54,15 +53,14 @@ templates/
 
 ### 1. Install the Skill
 
-**OpenClaw CLI:**
+**Claude.ai:** Upload the `clawhub/obsidian-vault-context/` folder via Settings > Capabilities > Skills.
+
+**Claude Code:**
 ```bash
-openclaw plugins install tesfandiari/openclaw-obsidian-vault
+cp -r clawhub/obsidian-vault-context/ ~/.claude/skills/
 ```
 
-**Manual:**
-```bash
-cp -r skills/obsidian-vault-context/ ~/.openclaw/workspace/skills/
-```
+**ClawHub:** Install directly from [clawhub.ai](https://clawhub.ai) (coming soon).
 
 ### 2. Set Up Orchestration Files
 
@@ -90,15 +88,10 @@ Run as a systemd service for always-on sync. See `references/obsidian-headless-s
 
 ### 4. Customize the Agent
 
-Copy `templates/SOUL.md` to your OpenClaw workspace and edit it:
+Copy `templates/SOUL.md` to your workspace and edit it:
 - Replace the vault map with your folder structure
 - Set the agent's voice and communication style
 - Define what the agent helps with
-
-```bash
-cp templates/SOUL.md ~/.openclaw/workspace/SOUL.md
-cp templates/AGENTS.md ~/.openclaw/workspace/AGENTS.md
-```
 
 ## Works With Obsidian Skills
 
@@ -124,8 +117,8 @@ Install both for the full stack:
 # Format + tool skills
 npx skills add git@github.com:kepano/obsidian-skills.git
 
-# Workflow + orchestration skill
-openclaw plugins install tesfandiari/openclaw-obsidian-vault
+# Workflow + orchestration skill (via ClawHub)
+# Coming soon
 ```
 
 ## How It Works
